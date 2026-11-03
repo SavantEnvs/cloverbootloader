@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Boot</key>
+	<dict>
+		<key>Timeout</key>
+		<integer>5</integer>
+		<key>Fast</key>
+		<true/>
+		<key>DefaultVolume</key>
+		<string>LastBootedVolume</string>
+	</dict>
+	<key>GUI</key>
+	<dict>
+		<key>Theme</key>
+		<string>embedded</string>
+	</dict>
+</dict>
+</plist>

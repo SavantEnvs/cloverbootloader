@@ -1,0 +1,9 @@
+project: savantenvs/cloverbootloader
+target: fuzz_configplist
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar   # accumulation (REQUIRED)
+  - file://mayhem/fuzz_configplist/testsuite                                          # per-target starter seeds
+cmds:
+  - cmd: /mayhem/fuzz_configplist
+    libfuzzer: true
+    timeout: 20
