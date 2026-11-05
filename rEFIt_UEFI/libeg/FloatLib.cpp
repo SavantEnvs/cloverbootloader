@@ -307,8 +307,8 @@ void QuickSortWorker(UINT8* Array, INTN Low, INTN High, INTN Size,
   // Sort around center
   while (i <= j)
   {
-    while (compare((const void*)(Array + i * Size), medBuffer) == -1) ++i;
-    while (compare((const void*)(Array + j * Size), medBuffer) == 1) --j;
+    while (compare((const void*)(Array + i * Size), medBuffer) < 0) ++i;
+    while (compare((const void*)(Array + j * Size), medBuffer) > 0) --j;
     // Change
     if (i <= j) {
       CopyMem(Temp, Array + i * Size, Size);
@@ -327,7 +327,11 @@ void QuickSortWorker(UINT8* Array, INTN Low, INTN High, INTN Size,
 
 void QuickSort(void* Array, INTN Number, INTN Size, int(*compare)(CONST void* a, CONST void* b))
 {
+  if (Number <= 1 || Array == nullptr || Size <= 0 || compare == nullptr)
+     return;
   void* Buffer = (__typeof__(Buffer))AllocatePool(Size);
+  if (!Buffer)
+     return;
   QuickSortWorker((UINT8*)Array, 0, Number - 1, Size, compare, Buffer);
   FreePool(Buffer);
 }

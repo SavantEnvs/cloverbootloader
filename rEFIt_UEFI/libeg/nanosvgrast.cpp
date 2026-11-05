@@ -1780,7 +1780,9 @@ static void renderShape(NSVGrasterizer* r,
     }
 
     // Rasterize edges
-    QuickSort(r->edges, r->nedges, sizeof(NSVGedge), compare_edges);
+    if (r->nedges > 1) {
+      QuickSort(r->edges, r->nedges, sizeof(NSVGedge), compare_edges);
+    }
 
     // now, traverse the scanlines and find the intersections on each scanline, use non-zero rule
     nsvg__initPaint(&cache, &shape->fill, shape, xform);
@@ -1801,7 +1803,9 @@ static void renderShape(NSVGrasterizer* r,
     }
 
     // Rasterize edges
-    QuickSort(r->edges, r->nedges, sizeof(NSVGedge), compare_edges);
+    if (r->nedges > 1) {
+      QuickSort(r->edges, r->nedges, sizeof(NSVGedge), compare_edges);
+    }
 
     // now, traverse the scanlines and find the intersections on each scanline, use non-zero rule
     nsvg__initPaint(&cache, &shape->stroke, shape, xform);
